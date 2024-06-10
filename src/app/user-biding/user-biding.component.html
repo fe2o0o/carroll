@@ -1,0 +1,107 @@
+<section *ngIf="myBindingAuction?.length != 0; else test " class="py-5 mt-5">
+  <div class="container">
+    <div class="row g-4">
+      <div *ngFor="let bid of myBindingAuction" class="col-md-4">
+        <div class="inner  shadow">
+          <div class="imges">
+              <owl-carousel-o [options]="customOptions">
+                <ng-template *ngFor="let img of bid?.auction?.car?.images" carouselSlide>
+                  <img [src]="img?.imagePath" class="w-100" alt="">
+                </ng-template>
+              </owl-carousel-o>
+          </div>
+          <div class="deatails p-4">
+            <p class="fw-bold fs-5">Actual Bid Start : {{bid?.auction?.bind_start|currency:'EGP '}}</p>
+            <p class="fw-bold fs-5">My Bid : {{bid?.price|currency:'EGP '}}</p>
+            <p class="fw-bold fs-6">Status : <span [ngClass]="getClassStatus(bid?.status)" >{{bid?.status}}</span></p>
+            <button  *ngIf="bid?.status == 'accept'" class="btn btn-success w-100" (click)="showCard(bid?.auction?.id)">Follow up Proccess</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<ng-template #test>
+  <div id="template" style="background-image: url('assets/images/sell-hero.jpg');" class="">
+    <div class="container position-relative z-3 d-flex justify-content-start align-items-center h-100">
+      <div>
+        <h1 class="text-white">Start Your Biding Now</h1>
+        <button routerLink="/auctions" class="btn btn-success">Bid Now</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<div class="proccess ">
+    <div class="container h-100 d-flex position-relative justify-content-center align-items-center">
+      <i (click)="hideOver()" class="fa-solid fa-circle-xmark fs-4 text-danger"></i>
+      <div class="cardinfo shadow-lg bg-white  w-50 p-3 rounded-3">
+        <h3>Card Info</h3>
+        <form [formGroup]="cardForm" class="py-3" action="">
+          <div class="form-group mb-4">
+            <label for="" class="fw-bold mb-2">Name On Card <span class="fw-bolder text-danger fs-5">(Optional)</span></label>
+            <input type="text" class="form-control" placeholder="Your Name On Card">
+          </div>
+          <div class="d-flex align-items-center">
+            <div class="form-group mb-4 flex-grow-1 me-2">
+              <label for="" class="fw-bold mb-2">Card Number<span class="fw-bolder text-danger fs-5">*</span></label>
+              <input formControlName="cardnumber" type="text" class="form-control" placeholder="**** **** **** ****">
+            </div>
+            <div class="mt-2">
+              <img src="assets/images/payment_icons.svg" alt="">
+            </div>
+          </div>
+          <div class="form-group mb-4 d-flex align-items-end">
+            <div class="flex-grow-1 me-3">
+              <label for="" class="fw-bold mb-2">Expire Date<span class="fw-bolder text-danger fs-5">*</span></label>
+              <input formControlName="expireDate" type="date" class="form-control " placeholder="Your Name On Card">
+            </div>
+            <div>
+              <input formControlName="cvv" class="form-control" type="text" maxlength="3" placeholder="CVV">
+            </div>
+          </div>
+          <button [disabled]="cardForm.invalid" (click)="getShowRoom()" class="btn btn-success">Submit</button>
+        </form>
+        <ul>
+          <li >
+            <p class="fw-bolder text-danger">5% of the auction value will be withdrawn and is refundable</p>
+          </li>
+          <li >
+            <p class="fw-bolder text-danger">300 pounds will be withdrawn for showroom</p>
+          </li>
+        </ul>
+      </div>
+      <div class="showRoomInfo shadow-lg bg-white  w-50 p-3 rounded-3">
+        <p>Location : {{showRoomData?.location}} </p>
+        <p>Date : {{showRoomData?.date}} </p>
+        <p>Capacity : {{showRoomData?.capacity}} </p>
+        <div>
+          <h6 class="fw-bold text-danger">Take a Photo for QR CODE For Invetation</h6>
+          <img class="w-100" height="400" src="assets/images/Example-QR-code.webp" alt="">
+        </div>
+        <button (click)="pickUp()" class="btn btn-success">Follow</button>
+      </div>
+      <div class="pickUp shadow-lg bg-white  w-50 p-3 rounded-3">
+        <h6>Choose You Transportation Method</h6>
+        <div class="form-group mb-3">
+          <input name="pickUp" type="radio">
+          <label class="fw-bold fs-6" for="">Helpo <span><a class="text-decoration-none text-primary" href="https://helpooapp.com">Visit Helpoo Service</a></span></label>
+        </div>
+        <div class="form-group">
+          <input name="pickUp" type="radio">
+          <label class="fw-bold fs-6" for="">Self Pick Up </label>
+        </div>
+        <button (click)="fadeBack()" class="btn btn-success">Follow</button>
+      </div>
+      <div class="feedback shadow-lg bg-white  w-50 p-3 rounded-3">
+        <h6>Please Set Your Feed Back</h6>
+        <form [formGroup]="feedbackForm" class="py-4" action="">
+          <label for="">Your Message</label>
+          <textarea formControlName="message" class="form-control" name="" id=""></textarea>
+          <button [disabled]="feedbackForm.invalid" (click)="finish(feedbackForm)" class="btn btn-primary">Finish</button>
+        </form>
+      </div>
+    </div>
+</div>

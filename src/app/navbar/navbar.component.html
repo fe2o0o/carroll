@@ -1,0 +1,50 @@
+<nav class="navbar  fixed-top navbar-expand-lg ">
+  <div class="container">
+    <a class="navbar-brand" href="#"><img width="80" src="assets/images/logo.png" alt=""></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa-solid fa-bars fw-bolder fs-2"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto   mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="auctions">Auctions</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="contact">Cantact Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="about">About Us</a>
+        </li>
+        <li *ngIf="isLoggin" class="nav-item">
+          <a class="nav-link" routerLink="sell">Sell</a>
+        </li>
+      </ul>
+      <div *ngIf="!isLoggin" >
+        <button routerLink="login" class="login btn me-2">Signin </button>
+        <button  routerLink="register" class="signup btn ">Register </button>
+      </div>
+      <div *ngIf="isLoggin" class="user-profile position-relative">
+        <div (click)="toggleProfile()" class="icon d-flex justify-content-center align-items-center">
+          <i class="fa fa-user"></i>
+        </div>
+        <div #profileLinks class="profile-links shadow">
+          <ul class="p-2  list-unstyled">
+            <li class="py-2">
+              <a routerLink="userAuction" (click)="toggleProfile()" class="text-decoration-none text-dark fw-bold ">My Auctions</a>
+            </li>
+            <li class="py-2">
+              <a routerLink="userBidding" (click)="toggleProfile()" class="text-decoration-none text-dark fw-bold ">My Bidding</a>
+            </li>
+            <li class="py-2">
+              <button (click)="logOut()" class="btn btn-danger p-1 px-3 w-100">LogOut</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

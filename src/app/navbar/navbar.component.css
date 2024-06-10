@@ -1,0 +1,75 @@
+.navbar{
+  transition: all .5s;
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  -ms-transition: all .5s;
+  -o-transition: all .5s;
+  z-index: 99999;
+}
+
+.nav-link{
+  padding:0 1.5rem !important;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.nav-item {
+  margin-right: 16px;
+}
+
+
+.navbar-inverse{
+  background-color: #1d2939;
+  .nav-link{
+    color: white;
+  }
+  .fa-bars{
+    color: white !important;
+  }
+}
+
+.user-profile .icon{
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  background-color: #1d2939;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  color: white;
+  cursor: pointer;
+}
+
+.profile-links{
+  position: absolute;
+  width: 200px;
+  right: 0;
+  top: 115%;
+  display: none;
+  background-color: white;
+  border: 1px solid #00CF7B;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+
+.login,
+.signup {
+  width: 100px;
+    color: white;
+      font-weight: 700;
+}
+
+.login{
+  background-color: #00a060;
+
+}
+
+.signup{
+  background-color: #002d5d ;
+}

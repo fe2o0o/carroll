@@ -1,0 +1,22 @@
+.overlay {
+  z-index: 999999;
+  top: -100%;
+  transition: all 1s;
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+}
+
+.overlay.show {
+  top: 0;
+}
+
+.overlay.hide {
+  top: -100%;
+}
+
+.fa-circle-xmark {
+  right: 2%;
+  cursor: pointer;
+}

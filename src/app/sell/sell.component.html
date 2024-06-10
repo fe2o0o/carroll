@@ -1,0 +1,140 @@
+<section class="hero py-5">
+  <div class="container py-5">
+    <div class="row justify-content-between align-items-center">
+      <div class="content col-md-5">
+        <h2 class="fw-bold ">SELL NOW <b>SAFE</b> And <b>EASY</b></h2>
+        <p class="lead fw-medium">
+          Sell Your Used Car and Accident , Classical, Used
+        </p>
+        <div *ngIf="!isLoggin" class="pt-3">
+          <button class="me-4 btn btn-success p-2">Register Now</button>
+          <button class="btn btn-primary p-2">Login</button>
+        </div>
+      </div>
+      <div class="auction-img  col-md-5">
+        <img class="w-100" src="assets/images/car-auctions.jpg" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5">
+  <div class="container">
+    <div class="head mb-5">
+      <h2 class="fw-bolder">Auction Details</h2>
+    </div>
+    <form  [formGroup]="carForm" (ngSubmit)="addCar(carForm)" enctype="multipart/form-data">
+      <div class="inner w-75 mx-auto">
+        <div class="head mb-4">
+          <h4 class="fw-bold ">Car Details</h4>
+        </div>
+        <div class="form-group mb-3 position-relative">
+          <label for="brand" class="fw-medium mb-2">Car Brand <span class="text-danger">*</span></label>
+          <input list="carBrands" name="brand" #brand formControlName="brand" id="brand" class="form-control p-1" (change)="currentBrand($event)" type="text">
+          <datalist id="carBrands">
+            <option *ngFor="let brand of carBrands" [ngValue]="brand.brand">{{brand.brand}}</option>
+          </datalist>
+        </div>
+        <div class="form-group mb-3">
+          <label for="model" class="fw-medium mb-2">Car Model <span class="text-danger">*</span></label>
+          <input id="model" name="model" formControlName="model" list="carModels" class="form-control p-1" type="text">
+          <datalist id="carModels">
+            <option *ngFor="let model of models" [ngValue]="model">{{model}}</option>
+          </datalist>
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="bStyle" class="fw-medium mb-2">Body Style <span class="text-danger">*</span></label>
+          <select formControlName="bodystyle" class="form-control" name="" id="bStyle">
+            <option value="sedan">Sedan</option>
+            <option value="SUV">SUV</option>
+            <option value="Compact">Compact</option>
+            <option value="Wagon">Wagon</option>
+            <option value="Coupe">Coupe</option>
+            <option value="Pickup">Pickup</option>
+            <option value="Hatchback">Hatchback</option>
+            <option value="sport coupe">sport coupe</option>
+            <option value="Van">Van</option>
+          </select>
+        </div>
+        <div class="form-group mb-3">
+          <label for="kilometers" class="fw-medium mb-2">Kilo Meters <span class="text-danger">*</span></label>
+          <input id="kilometers" formControlName="kilometers" class="form-control p-1" type="number">
+        </div>
+        <div class="form-group mb-3">
+          <label for="cylinders" class="fw-medium mb-2">Cylinders <span class="text-danger">*</span></label>
+          <input id="cylinders" formControlName="cylinders" class="form-control p-1" type="number">
+        </div>
+        <div class="form-group mb-3">
+          <label for="Chassisnumber" class="fw-medium mb-2">Chassisnumber <span class="text-danger">*</span></label>
+          <input id="Chassisnumber" formControlName="chassisnumber" class="form-control p-1" type="text">
+        </div>
+        <div class="form-group mb-3">
+          <label class="fw-medium mb-2 d-block">Has Accident <span class="text-danger">*</span></label>
+          <div class="parent d-flex">
+            <div class="yes me-4">
+              <input  formControlName="hasaccedint" name="hasaccedint" id="Yaccident" value="true" type="radio">
+              <label class="ms-1" for="Yaccident">Yes</label>
+            </div>
+            <div class="no">
+              <input formControlName="hasaccedint" name="hasaccedint" id="Naccident" value="false" type="radio">
+              <label class="ms-1" for="Naccident">No</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="model" class="fw-medium mb-2">Car Color <span class="text-danger">*</span></label>
+          <input formControlName="color" id="model" class="form-control form-control-color" type="color">
+        </div>
+        <div class="form-group mb-3">
+          <label for="model" class="fw-medium mb-2">Car Images <span class="text-danger">*</span></label>
+          <input formControlName="images"   (change)="pickImage($event)" id="model"
+           accept="image/png, image/gif, image/jpeg, image/jpg" class="form-control" type="file" multiple="true">
+        </div>
+        <div class="form-group mb-3">
+          <label for="Audate" class="fw-medium mb-2">Auction Start Date <span class="text-danger">*</span></label>
+          <input id="Audate" formControlName="start_date" class="form-control" type="date">
+        </div>
+        <div class="form-group mb-3">
+          <label for="Audate" class="fw-medium mb-2">Auction End Date <span class="text-danger">*</span></label>
+          <input id="Audate" formControlName="end_date" class="form-control" type="date">
+        </div>
+        <div class="form-group mb-3">
+          <label for="Audate" class="fw-medium mb-2">transmission <span class="text-danger">*</span></label>
+          <!-- <input  type="text"> -->
+          <select id="Audate" formControlName="transmission"  class="form-control" name="" id="">
+            <option value="Automatic">Automatic</option>
+            <option value="Manuel">Manuel</option>
+          </select>
+        </div>
+        <div class="form-group mb-3">
+          <label for="Audate" class="fw-medium mb-2">Category <span class="text-danger">*</span></label>
+          <!-- <input  type="text"> -->
+          <select id="Audate" formControlName="categoryId"  class="form-control" name="" id="">
+            <option value="1">Accedient</option>
+            <option value="2">Used</option>
+            <option value="3">Classic</option>
+          </select>
+        </div>
+        <div class="form-group mb-3">
+          <label for="Audate" class="fw-medium mb-2">Auction Price Start <span class="text-danger">*</span></label>
+          <input id="Audate" formControlName="price" class="form-control" type="number">
+        </div>
+        <div class="py-4">
+          <button [disabled]="carForm.invalid" class="btn btn-success">Submit Auction</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="overlay hide position-fixed   end-0 start-0">
+  <div class="container">
+    <div class="alert p-3 text-center bg-white w-50 position-relative mx-auto shadow">
+      <i (click)="toggleOverLay()" class="fa-solid fa-circle-xmark position-absolute  fs-3 text-danger"></i>
+      <i class="fa-solid fs-1 mb-3 fa-user-astronaut"></i>
+      <h4 class="mb-3">You Need To Register To Sell Your Car </h4>
+      <button routerLink="/auth" class="btn btn-success">register Now</button>
+    </div>
+  </div>
+</section>

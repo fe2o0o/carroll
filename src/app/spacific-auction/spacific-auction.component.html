@@ -1,0 +1,87 @@
+<section class="py-5 mt-5">
+  <div class="container">
+    <div class="head py-5">
+      <h2 class="fw-bold">Auction Details</h2>
+    </div>
+    <div class="row justify-content-between">
+      <div class="col-md-5">
+        <img  [src]="currentAuction?.car?.images[0]?.imagePath" class="w-100" alt="">
+        <div class="d-flex flex-wrap">
+          <div class="w-50 p-2" *ngFor="let img of currentAuction?.car?.images">
+            <img class="w-100" [src]="img?.imagePath" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="details-content ">
+          <h2 class=" mb-4">Vehicle Details</h2>
+          <ul class="list-unstyled">
+            <li class="py-2">
+              <p class="fw-bolder m-0 fs-5">Payment Options : <span class="ms-3  fw-medium detail-content">credit card , paypal
+                  , fawry</span></p>
+            </li>
+            <li class="py-2">
+              <p class="fw-bolder m-0 fs-5">Chassis Number : <span
+                  class="ms-3  fw-medium detail-content">{{currentAuction?.car?.Chassisnumber}}</span></p>
+            </li>
+            <li class="py-2">
+              <p class="fw-bolder m-0 fs-5">Cylinders : <span class="ms-3  fw-medium detail-content">{{currentAuction?.car?.cylinders}}</span></p>
+            </li>
+            <li class="py-2">
+              <p class="fw-bolder m-0 fs-5">Body Style : <span class="ms-3  fw-medium detail-content">{{currentAuction?.car?.bodystyle}}</span></p>
+            </li>
+            <li class="py-2">
+              <p class="fw-bolder m-0 fs-5">Color : <span [style.background-color]="currentAuction?.car?.color" class="ms-3  shadow py-1 px-5 fw-medium detail-content"></span></p>
+            </li>
+            <li class="py-2">
+              <p class="fw-bolder m-0 fs-5">Transmission : <span class="ms-3  fw-medium detail-content">{{currentAuction?.car?.transmission}}</span></p>
+            </li>
+            <li class="py-2">
+              <p class="fw-bolder m-0 fs-5">Brand : <span class="ms-3  fw-medium detail-content">{{currentAuction?.car?.brand}}</span></p>
+            </li>
+            <li class="py-2">
+              <p class="fw-bolder m-0 fs-5">Model : <span class="ms-3  fw-medium detail-content">{{currentAuction?.car?.model}}</span></p>
+            </li>
+            <li class="py-2">
+              <p class="fw-bolder m-0 fs-5">Category : <span class="ms-3  fw-medium detail-content">{{currentAuction?.car?.category?.title}}</span></p>
+            </li>
+            <li class="py-2">
+              <p class="fw-bolder m-0 fs-5">Kilometers : <span class="ms-3  fw-medium detail-content">{{currentAuction?.car?.kilometers}} km/h</span>
+              </p>
+            </li>
+            <li class="py-2">
+              <p class="fw-bolder m-0 fs-5">Has Accident : <span class="ms-3  fw-medium detail-content">{{currentAuction?.car?.hasaccident ? "Yes" : "No"}}</span>
+              </p>
+            </li>
+            <li class="py-2">
+              <p class="fw-bolder m-0 fs-5">Estimated Value : <span class="ms-3  fw-medium detail-content">{{currentAuction?.bind_start|currency:"EGP "}}</span></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="py-5 col-md-4">
+        <h6 class="fw-bold fs-4">Bid Information</h6>
+        <form [formGroup]="bidForm" (ngSubmit)="addBid(bidForm)" action="">
+          <label for="" class="fw-bold fs-5 mb-3">Your Bid : </label>
+          <input  formControlName="price" type="number" [value]="currentAuction?.last_bid" class="form-control mb-3">
+          <p class="text-danger">mini bid : {{currentAuction?.last_bid}}</p>
+          <button [disabled]="bidForm.invalid" class="btn btn-dark">Submit Bid</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="overlay hide position-fixed   end-0 start-0">
+  <div class="container">
+    <div class="alert p-3 text-center bg-white w-50 position-relative mx-auto shadow">
+      <i (click)="toggleOverLay()" class="fa-solid fa-circle-xmark position-absolute  fs-3 text-danger"></i>
+      <i class="fa-solid fs-1 mb-3 fa-user-astronaut"></i>
+      <h4 class="mb-3">You Need To Register To Sell Your Car </h4>
+      <button routerLink="/auth" class="btn btn-success">register Now</button>
+    </div>
+  </div>
+</section>

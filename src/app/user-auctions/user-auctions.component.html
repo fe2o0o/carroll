@@ -1,0 +1,57 @@
+<section *ngIf="myAuctions?.length != 0; else test " class="py-5 mt-5">
+
+  <div class="container">
+    <div class="mb-5">
+      <h2>My Auctions</h2>
+    </div>
+    <div  class="row mb-4 rounded-3  ">
+      <div  *ngFor="let auction of myAuctions" class="col-md-4 ">
+        <div class="inner border rounded-3 shadow">
+            <div class="">
+              <img [src]="auction?.car?.images[0]?.imagePath" class="w-100" alt="">
+            </div>
+            <div class="p-4 text-center">
+              <p class="fw-bold">Auction Date : {{auction?.auction_date_start}}</p>
+              <p class="fw-bold">Category : {{auction?.car?.category?.title}}</p>
+              <p class="fw-bold">Bind Start : {{auction?.bind_start|currency:"EGP "}}</p>
+              <p class="fw-bold">Status : <span [ngClass]="getClassStatus(auction?.status)">{{auction?.status}}</span></p>
+              <button  *ngIf="auction?.status == 'reject'" (click)="showBiding(auction?.id)" class="btn btn-danger w-100">Show Reason</button>
+              <button  *ngIf="auction?.status == 'accept' && auction?.isAvail == false" (click)="showRoom(auction?.id)" class="btn btn-success w-100">Show Room</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<ng-template #test>
+  <div id="template" style="background-image: url('assets/images/sell-hero.jpg');" class="">
+    <div class="container position-relative z-3 d-flex justify-content-start align-items-center h-100">
+        <div>
+          <h1 class="text-white">Start Your Own Auction Today</h1>
+          <button routerLink="/sell" class="btn btn-success">Sell Now</button>
+        </div>
+    </div>
+  </div>
+</ng-template>
+
+<app-binding [isOpen]="openSide" [auctionId]="bidAuctionId" (myEmmit)="toggleSlide($event)" ></app-binding>
+
+
+<div class="proccess">
+  <div class="container h-100 d-flex position-relative justify-content-center align-items-center">
+    <i (click)="hideOver()" class="fa-solid fa-circle-xmark fs-4 text-danger"></i>
+
+    <div class="showRoomInfo shadow-lg bg-white  w-50 p-3 rounded-3">
+      <p>Location : {{showRoomData?.location}} </p>
+      <p>Date : {{showRoomData?.date}} </p>
+      <p>Capacity : {{showRoomData?.capacity}} </p>
+      <div>
+        <h6 class="fw-bold text-danger">Take a Photo for QR CODE For Invetation</h6>
+        <img class="w-100" height="400" src="assets/images/Example-QR-code.webp" alt="">
+      </div>
+      <button (click)="hideOver()" class="btn btn-success">Done</button>
+    </div>
+  </div>
+</div>

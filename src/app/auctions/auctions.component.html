@@ -1,0 +1,33 @@
+<section style="background-image: url(assets/images/auction.hero.jpg);" class="hero">
+<div class="container h-100 d-flex justify-content-end align-items-center">
+  <div dir="">
+    <h1 class="fw-bolder ">CAR ROLL-DICE</h1>
+    <p>Has The Vehicles You Need</p>
+  </div>
+</div>
+</section>
+
+
+<section class="py-5">
+  <div class="container">
+    <div class="row g-4">
+      <div *ngFor="let auction of auctions" class="col-xl-4  col-lg-4 col-md-6 p-3">
+        <div class="card shadow">
+          <div class="img">
+            <img class="w-100 rounded-3 rounded-bottom-0" [src]="auction?.car?.images[0]?.imagePath" alt="">
+          </div>
+          <div class="content p-3">
+            <h3 class="fw-bolder">{{auction?.car?.brand +" "+ auction?.car?.model}}</h3>
+            <div class="acution-price py-3">
+              <h6 class="fw-bold mb-4">Starting Auction Price : <span class="text-primary">{{auction?.bind_start|currency:"EGP "}} </span> </h6>
+              <h6 class="fw-bold mb-3">Auction Start in : <span class="text-success p-1 rounded-2">{{auction?.auction_date_start}}</span> </h6>
+              <h6 class="fw-bold">Auction End in : <span class="text-danger p-1 rounded-2">{{auction?.auction_date_end}}</span> </h6>
+            </div>
+            <a [routerLink]="['/spacificAuction',auction?.id]" class="btn btn-card fw-bolder">Show More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,49 @@
+.auction-img img{
+  border-radius: 28% 72% 74% 26% / 49% 66% 34% 51% ;
+  -webkit-border-radius: 28% 72% 74% 26% / 49% 66% 34% 51% ;
+  -moz-border-radius: 28% 72% 74% 26% / 49% 66% 34% 51% ;
+  -ms-border-radius: 28% 72% 74% 26% / 49% 66% 34% 51% ;
+  -o-border-radius: 28% 72% 74% 26% / 49% 66% 34% 51% ;
+  -webkit-box-shadow: 15px 19px 34px -12px rgba(0, 0, 0, 0.63);
+  -moz-box-shadow: 15px 19px 34px -12px rgba(0, 0, 0, 0.63);
+  box-shadow: 15px 19px 34px -12px rgba(0, 0, 0, 0.63);
+}
+
+button
+{
+  width: 150px;
+}
+
+input,
+select{
+  border: 1px solid black;
+}
+
+input:focus,
+select:focus{
+  box-shadow: none;
+  border: 1px solid black;
+}
+
+
+.overlay{
+  z-index: 999999;
+  top: -100% ;
+  transition: all 1s;
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+}
+
+.overlay.show{
+  top: 0;
+}
+.overlay.hide{
+  top: -100%;
+}
+
+.fa-circle-xmark{
+  right: 2%;
+  cursor: pointer;
+}

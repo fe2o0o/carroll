@@ -1,0 +1,32 @@
+.binding{
+  width: 300px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: -100%;
+  z-index: 999999;
+  background-color: white;
+  transition: all .5s;
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  -ms-transition: all .5s;
+  -o-transition: all .5s;
+}
+
+.binding.show{
+  right: 0;
+}
+
+.binding.hide{
+  right: -100%;
+}
+
+.fa-circle-xmark{
+  right: 20px;
+  cursor: pointer;
+}
+
+.btn-suceess,
+.btn-danger{
+  width: 45% !important;
+}

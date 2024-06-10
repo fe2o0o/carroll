@@ -1,0 +1,125 @@
+.hero{
+  height: 70vh;
+}
+h1{
+  font-size: 50px;
+  font-weight: 800;
+}
+
+.btns button{
+  width: 150px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.btns button:first-child
+{
+  background-color: #009B5D ;
+  color: white !important;
+  margin-right: 15px;
+}
+.btns button:nth-child(2)
+{
+  background-color: #002d5d ;
+  color: white !important;
+}
+
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 15px;
+  margin: 50px;
+  padding: 0px 20px;
+  background-color: rgb(241, 245, 248);
+}
+
+.pricing-table {
+  -webkit-box-shadow: 1px 2px 20px 11px rgba(126, 151, 161, 1);
+  -moz-box-shadow: 1px 2px 20px 11px rgba(126, 151, 161, 1);
+  box-shadow: 1px 2px 20px 11px rgba(126, 151, 161, 1);
+  text-align: center;
+  padding: 30px 0px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.pricing-table .head {
+  padding-bottom: 50px;
+  transition: all 0.5s ease;
+}
+
+.pricing-table .head .title {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.pricing-table .content .price {
+  background: linear-gradient(to right, #A7C4A0 10%, #7B8CDE 90%);
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  line-height: 90px;
+  border-radius: 50%;
+  margin-top: -50px;
+  transition: all 0.5s ease;
+  box-shadow: 0px 0px 12px #2b97c9;
+}
+
+.pricing-table:hover .content .price {
+  transform: scale(1.2);
+}
+
+
+.pricing-table .content .price h1 {
+  color: #fff;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+
+.pricing-table .content ul {
+  list-style-type: none;
+  margin-bottom: 20px;
+  padding-top: 13px;
+}
+
+.pricing-table .content ul li {
+  margin: 20px 0px;
+  font-size: 15px;
+}
+
+.pricing-table .content .buy-now {
+  background: linear-gradient(to right, #A7C4A0 10%, #7B8CDE 90%);
+  border-radius: 50px;
+  font-weight: 500;
+  position: relative;
+  display: inline-block;
+}
+
+
+
+
+
+
+
+.fa-circle-check {
+  color: #54d994;
+}
+
+.fa-circle-xmark {
+  color: #e23c3c;
+}
+
+@media screen and (max-width:768px) {
+  .wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width:600px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+  }
+}

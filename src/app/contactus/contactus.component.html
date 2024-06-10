@@ -1,0 +1,60 @@
+
+    <main>
+      <section style="background-image: url('assets/images/contactus-hero.webp');" class="hero-contact position-relative">
+        <div class="container position-relative z-2 d-flex align-items-center h-100">
+          <h1 class="fs-1 fw-bolder">Contact-Us</h1>
+        </div>
+      </section>
+
+      <section class="request py-5">
+        <div class=" container contact-form w-50 ">
+          <div class="head">
+            <h3 class="h1">Submit a Request</h3>
+          </div>
+          <form (ngSubmit)="handleAddContact(contactForm)" [formGroup]="contactForm" action="">
+            <div class="form-group py-2">
+              <label for="email" class="mb-2">E_mail <span class="text-danger fw-bolder fs-4"> *</span></label>
+              <input formControlName="email" id="email" class="form-control" type="email">
+                <div *ngIf="contactForm?.get('email')?.errors && contactForm.get('email')?.touched">
+                  <P *ngIf="contactForm?.get('email')?.getError('required')" class="m-0 fw-bold text-danger">email is Reuired</P>
+                </div>
+            </div>
+            <div class="form-group py-2">
+              <label for="name" class="mb-2">Name <span class="text-danger fw-bolder fs-4"> *</span></label>
+              <input formControlName="name" id="name" class="form-control" type="text">
+              <div *ngIf="contactForm?.get('name')?.errors && contactForm.get('name')?.touched">
+                <P *ngIf="contactForm?.get('name')?.getError('required')" class="m-0 fw-bold text-danger">name is Reuired</P>
+              </div>
+            </div>
+            <div class="form-group py-2">
+              <label for="phoneNumber" class="mb-2">Phone Number <span class="text-danger fw-bolder fs-4"> *</span></label>
+              <input formControlName="phoneNumber" id="phoneNumber" class="form-control" type="tel">
+              <div *ngIf="contactForm?.get('phoneNumber')?.errors && contactForm.get('phoneNumber')?.touched">
+                <P *ngIf="contactForm?.get('phoneNumber')?.getError('required')" class="m-0 fw-bold text-danger">phoneNumber is Reuired</P>
+              </div>
+            </div>
+            <div class="form-group py-2">
+              <label for="subject" class="mb-2">Subject<span class="text-danger fw-bolder fs-4"> *</span></label>
+              <input formControlName="subject" id="subject" class="form-control" type="text">
+                  <div *ngIf="contactForm?.get('subject')?.errors && contactForm.get('subject')?.touched">
+                    <P *ngIf="contactForm?.get('subject')?.getError('required')" class="m-0 fw-bold text-danger">subject is
+                      Reuired</P>
+                  </div>
+            </div>
+            <div class="form-group py-2">
+              <label for="message" class="mb-2">Describe Your Issue<span class="text-danger fw-bolder fs-4">
+                  *</span></label>
+              <textarea formControlName="message" name="" class="form-control" id="" cols="30" rows="10"></textarea>
+
+                  <div *ngIf="contactForm?.get('message')?.errors && contactForm.get('message')?.touched">
+                    <P *ngIf="contactForm?.get('message')?.getError('required')" class="m-0 fw-bold text-danger">message is
+                      Reuired</P>
+                  </div>
+            </div>
+            <div class="py-4">
+              <button [disabled]="contactForm.invalid" class="btn btn-danger">Submit</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
